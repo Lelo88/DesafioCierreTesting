@@ -1,6 +1,7 @@
 package products
 
 import (
+	"errors"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -45,7 +46,19 @@ func TestGetAllBySeller(t *testing.T) {
 	})
 
 	t.Run("GetError", func(t *testing.T) {
+		
+		errInternal:=errors.New("error in repository")
+		//productEmpty := Product{}
+		ser:=NewServiceStub(&serviceStub{
+			ProductMem: products,
+			Error: errors.New("error in repository"),
+		})
 
+		listproducts, err := ser.GetAllBySeller("hola")
+		
+		assert.Error(t, err)
+		assert.Equal(t,errInternal,err)
+		assert.NotEqual(t, Product{}, listproducts)
 	})
 }
 
