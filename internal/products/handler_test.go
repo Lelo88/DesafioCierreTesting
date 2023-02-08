@@ -2,6 +2,7 @@ package products
 
 import (
 	"encoding/json"
+	"errors"
 	"net/http"
 	"net/http/httptest"
 	"strings"
@@ -82,10 +83,29 @@ func TestGetProducts(t *testing.T){
 	})
 
 	t.Run("GetProducts empty", func(t *testing.T) {
+		repo.Reset()
+		code := http.StatusBadRequest
 
+		req, res := NewRequest(http.MethodGet, "/api/v1/products?seller_id=", "")
+		
+		serv.ServeHTTP(res, req)
+		var resp = []Product{}
+		err := json.Unmarshal(res.Body.Bytes(), &resp)
+		assert.Error(t, err)
+		assert.Equal(t, code, res.Code)
 	})	
 
 	t.Run("GetProducts errorserver", func(t *testing.T) {
+		repo.Reset()
+		code := http.StatusInternalServerError
+		repo.Error = errors.New("Error")
 
+		req, res := NewRequest(http.MethodGet, "/api/v1/products?seller_id=adsasd", "")
+		
+		serv.ServeHTTP(res, req)
+		var resp []Product
+		err := json.Unmarshal(res.Body.Bytes(), &resp)
+		assert.Error(t, err)
+		assert.Equal(t, code, res.Code)
 	})
 }
