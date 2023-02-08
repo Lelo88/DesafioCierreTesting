@@ -1,12 +1,14 @@
 package products
-/*
+
 import (
+	"encoding/json"
 	"net/http"
 	"net/http/httptest"
 	"strings"
 	"testing"
 
 	"github.com/gin-gonic/gin"
+	"github.com/stretchr/testify/assert"
 )
 
 
@@ -36,20 +38,47 @@ func NewRequest(method, path, body string) (req *http.Request, res *httptest.Res
 	return
 }
 
-type productsHandler struct{
-	Data []Product
-	Message string
-}
+/*type productsHandler struct{
+	ID          string  `json:"id"`
+	SellerID    string  `json:"seller_id"`
+	Description string  `json:"description"`
+	Price       float64 `json:"price"`
+}*/
 
 
 func TestGetProducts(t *testing.T){
 
-	repo := NewServiceStub()
+	/*repo := NewServiceStub()
+	serv := CreateProductServer(repo)*/
+	repo:= NewFakeRepository()
 	serv := CreateProductServer(repo)
-
 	t.Run("GetProducts OK", func(t *testing.T) {
+		repo.Reset()
 		code := http.StatusOK
-		
+		repo.ProductMem = []Product{{
+				ID:          "mock",
+				SellerID:    "FEX112AC",
+				Description: "generic product",
+				Price:       123.55,
+		},}
+
+		expResult := []Product{{
+			ID:          "mock",
+			SellerID:    "FEX112AC",
+			Description: "generic product",
+			Price:       123.55,
+		},}
+
+		req, res := NewRequest(http.MethodGet, "/api/v1/products?seller_id=FEX112AC", "")
+		serv.ServeHTTP(res, req)
+
+		var resp []Product
+		err := json.Unmarshal(res.Body.Bytes(), &resp)
+
+		assert.NoError(t,err)
+		assert.Equal(t, code, res.Code)
+		assert.Equal(t, expResult, resp)
+
 	})
 
 	t.Run("GetProducts empty", func(t *testing.T) {
@@ -59,4 +88,4 @@ func TestGetProducts(t *testing.T){
 	t.Run("GetProducts errorserver", func(t *testing.T) {
 
 	})
-}*/
+}
