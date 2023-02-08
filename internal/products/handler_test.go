@@ -1,9 +1,10 @@
 package products
-
+/*
 import (
 	"net/http"
 	"net/http/httptest"
 	"strings"
+	"testing"
 
 	"github.com/gin-gonic/gin"
 )
@@ -34,3 +35,28 @@ func NewRequest(method, path, body string) (req *http.Request, res *httptest.Res
 
 	return
 }
+
+type productsHandler struct{
+	Data []Product
+	Message string
+}
+
+
+func TestGetProducts(t *testing.T){
+
+	repo := NewServiceStub()
+	serv := CreateProductServer(repo)
+
+	t.Run("GetProducts OK", func(t *testing.T) {
+		code := http.StatusOK
+		
+	})
+
+	t.Run("GetProducts empty", func(t *testing.T) {
+
+	})	
+
+	t.Run("GetProducts errorserver", func(t *testing.T) {
+
+	})
+}*/
