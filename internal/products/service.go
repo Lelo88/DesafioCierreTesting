@@ -1,6 +1,12 @@
 package products
 
-import "log"
+import "errors"
+
+//import "log"
+
+var (
+	 ErrInternal = errors.New("internal error")
+)
 
 type Service interface {
 	GetAllBySeller(sellerID string) ([]Product, error)
@@ -19,8 +25,8 @@ func NewService(repo Repository) Service {
 func (s *service) GetAllBySeller(sellerID string) ([]Product, error) {
 	data, err := s.repo.GetAllBySeller(sellerID)
 	if err != nil {
-		log.Println("error in repository", err.Error(), "sellerId:", sellerID)
-		return nil, err
+		//log.Println("error in repository", err.Error(), "sellerId:", sellerID)
+		return nil, ErrInternal
 	}
 	return data, err
 }

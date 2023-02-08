@@ -33,7 +33,7 @@ func TestGetAllBySeller(t *testing.T) {
 
 	products := []Product{product}
 
-	t.Run("GetProductsBySeller", func(t *testing.T) {
+	t.Run("ok", func(t *testing.T) {
 		ser := NewServiceStub(&serviceStub{
 			ProductMem: products,
 			Error: nil,
@@ -47,18 +47,18 @@ func TestGetAllBySeller(t *testing.T) {
 
 	t.Run("GetError", func(t *testing.T) {
 		
-		errInternal:=errors.New("error in repository")
+		//errInternal:=errors.New("error in repository sellerId: hola")
 		//productEmpty := Product{}
 		ser:=NewServiceStub(&serviceStub{
 			ProductMem: products,
-			Error: errors.New("error in repository"),
+			Error: ErrInternal,
 		})
 
-		listproducts, err := ser.GetAllBySeller("hola")
+		_, err := ser.GetAllBySeller("hola")
 		
 		assert.Error(t, err)
-		assert.Equal(t,errInternal,err)
-		assert.NotEqual(t, Product{}, listproducts)
+		assert.True(t,errors.Is(ErrInternal,err))
+		//assert.NotEqual(t, []Product{}, listproducts)
 	})
 }
 
