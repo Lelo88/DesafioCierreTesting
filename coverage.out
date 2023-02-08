@@ -1,4 +1,13 @@
 mode: atomic
+github.com/bootcamp-go/desafio-cierre-testing/internal/products/service.go:19.42,23.2 1 3
+github.com/bootcamp-go/desafio-cierre-testing/internal/products/service.go:25.70,27.16 2 4
+github.com/bootcamp-go/desafio-cierre-testing/internal/products/service.go:31.2,31.18 1 2
+github.com/bootcamp-go/desafio-cierre-testing/internal/products/service.go:27.16,30.3 1 2
+github.com/bootcamp-go/desafio-cierre-testing/cmd/router/router.go:8.31,10.2 2 0
+github.com/bootcamp-go/desafio-cierre-testing/cmd/router/router.go:10.2,12.3 1 0
+github.com/bootcamp-go/desafio-cierre-testing/cmd/router/router.go:16.46,22.2 5 0
+github.com/bootcamp-go/desafio-cierre-testing/cmd/router/router.go:22.2,24.3 1 0
+github.com/bootcamp-go/desafio-cierre-testing/cmd/main.go:8.13,14.2 3 0
 github.com/bootcamp-go/desafio-cierre-testing/internal/products/handler.go:11.37,15.2 1 1
 github.com/bootcamp-go/desafio-cierre-testing/internal/products/handler.go:17.49,19.20 2 3
 github.com/bootcamp-go/desafio-cierre-testing/internal/products/handler.go:23.2,24.16 2 2
@@ -10,12 +19,3 @@ github.com/bootcamp-go/desafio-cierre-testing/internal/products/repository.go:13
 github.com/bootcamp-go/desafio-cierre-testing/internal/products/repository_fake.go:8.42,10.2 1 3
 github.com/bootcamp-go/desafio-cierre-testing/internal/products/repository_fake.go:12.77,14.2 1 4
 github.com/bootcamp-go/desafio-cierre-testing/internal/products/repository_fake.go:16.34,19.2 2 3
-github.com/bootcamp-go/desafio-cierre-testing/internal/products/service.go:19.42,23.2 1 3
-github.com/bootcamp-go/desafio-cierre-testing/internal/products/service.go:25.70,27.16 2 4
-github.com/bootcamp-go/desafio-cierre-testing/internal/products/service.go:31.2,31.18 1 2
-github.com/bootcamp-go/desafio-cierre-testing/internal/products/service.go:27.16,30.3 1 2
-github.com/bootcamp-go/desafio-cierre-testing/cmd/router/router.go:8.31,10.2 2 0
-github.com/bootcamp-go/desafio-cierre-testing/cmd/router/router.go:10.2,12.3 1 0
-github.com/bootcamp-go/desafio-cierre-testing/cmd/router/router.go:16.46,22.2 5 0
-github.com/bootcamp-go/desafio-cierre-testing/cmd/router/router.go:22.2,24.3 1 0
-github.com/bootcamp-go/desafio-cierre-testing/cmd/main.go:8.13,14.2 3 0
